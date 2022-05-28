@@ -41,10 +41,9 @@ contract FlashloanV1 is FlashLoanReceiverBaseV1 {
         override
     {
         require(_amount <= getBalanceInternal(address(this), _reserve), "Invalid balance, was the flashLoan successful?");
-       //
+
         // La tua logica va qui.
-        //!! Assicurati che *questo contratto* abbia abbastanza fondi di `_reserve` per rimborsare la `_fee`
-        //
+        // Assicurati che *questo contratto* abbia abbastanza fondi di `_reserve` per rimborsare la `_fee`
 
         uint totalDebt = _amount.add(_fee);
         transferFundsBackToPoolInternal(_reserve, totalDebt);
